@@ -19,6 +19,6 @@ Jeidy Nicol Murillo Murillo - 2359310
 ### 📌Objetivos:
 
 
+- Crear un programa para jugar piedra, papel o tijera
 - Crear interfaces graficas en NetBeans
-- Practicar el uso de Canvas/Paint
-- Practicar la creación de intefaces gráficas manualmente
+- Aplicar el Modelo Vista-Controlador
