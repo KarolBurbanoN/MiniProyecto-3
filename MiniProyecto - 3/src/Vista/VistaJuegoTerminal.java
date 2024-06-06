@@ -1,6 +1,6 @@
 package Vista;
-
 import java.util.Scanner;
+
 import Controlador.ControladorJuego;
 
 public class VistaJuegoTerminal implements VistaJuego {
@@ -19,8 +19,23 @@ public class VistaJuegoTerminal implements VistaJuego {
         System.out.print("Seleccione una opcion: ");
     }
 
-        
-    public void mostrarInstrucciones() {
+    @Override
+    public void mostrarMenuJuego(ControladorJuego juego) {
+        System.out.println("--------------------------------------------");    
+        System.out.println("           Haz seleccionado Jugar");
+        System.out.println("--------------------------------------------");
+        System.out.print("Que desea escoger?\n");
+        System.out.println("1. Piedra\r\n" + //
+                           "2. Papel\r\n" + //  
+                           "3. Tijera\r\n" + //     
+                           "4. Salir\r");  
+        System.out.println("--------------------------------------------");               
+        System.out.print("Seleccione una opcion: ");
+    }
+
+
+    @Override
+    public void mostrarInstrucciones(ControladorJuego juego) {
         System.out.println("\n--------------------------------------------");
         System.out.println("     Haz seleccionado ver instrucciones");
         System.out.println("--------------------------------------------");
@@ -34,24 +49,11 @@ public class VistaJuegoTerminal implements VistaJuego {
     }
 
     @Override
-    public void mostrarMenuJuego() {
-        System.out.println("--------------------------------------------");    
-        System.out.println("           Haz seleccionado Jugar");
-        System.out.println("--------------------------------------------");
-        System.out.print("Que desea escoger?\n");
-        System.out.println("1. Piedra\r\n" + //
-                           "2. Papel\r\n" + //  
-                           "3. Tijera\r\n" + //     
-                           "4. Salir\r");  
-        System.out.println("--------------------------------------------");               
-        System.out.print("Seleccione una opcion: ");
-    }
-
-    @Override
     public void mostrarResultado(int victoriasJugador, int victoriasComputadora) {
         System.out.println("--------------------------------------------");
         System.out.println("Victorias Jugador: " + victoriasJugador);
         System.out.println("Victorias Computadora: " + victoriasComputadora);
         System.out.println("--------------------------------------------");
     }
+
 }

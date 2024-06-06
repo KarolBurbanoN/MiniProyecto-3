@@ -174,33 +174,18 @@ public class JFrameComoJugarGUI extends javax.swing.JFrame {
         jButtonPapel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/papelH.png"))); // NOI18N
         jButtonPapel.setBorderPainted(false);
         jButtonPapel.setContentAreaFilled(false);
-        jButtonPapel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPapelActionPerformed(evt);
-            }
-        });
         getContentPane().add(jButtonPapel);
         jButtonPapel.setBounds(280, 370, 210, 240);
 
         jButtonPiedra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/piedraH.png"))); // NOI18N
         jButtonPiedra.setBorderPainted(false);
         jButtonPiedra.setContentAreaFilled(false);
-        jButtonPiedra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPiedraActionPerformed(evt);
-            }
-        });
         getContentPane().add(jButtonPiedra);
         jButtonPiedra.setBounds(80, 370, 210, 240);
 
         jButtonTijeras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tijeresH.png"))); // NOI18N
         jButtonTijeras.setBorderPainted(false);
         jButtonTijeras.setContentAreaFilled(false);
-        jButtonTijeras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTijerasActionPerformed(evt);
-            }
-        });
         getContentPane().add(jButtonTijeras);
         jButtonTijeras.setBounds(480, 370, 210, 240);
 
@@ -278,18 +263,6 @@ public class JFrameComoJugarGUI extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1108, 672));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-//borrar
-    private void jButtonPiedraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPiedraActionPerformed
-
-    }//GEN-LAST:event_jButtonPiedraActionPerformed
-//borrar
-    private void jButtonPapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPapelActionPerformed
-
-    }//GEN-LAST:event_jButtonPapelActionPerformed
-//borrar
-    private void jButtonTijerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTijerasActionPerformed
-
-    }//GEN-LAST:event_jButtonTijerasActionPerformed
     
     //Define el método maneja el evento de clic del botón de Volver, lo que hace que se abra la pantalla inicial del juego y se cierre la ventana actual.
     private void jButtonVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonVolverMouseClicked
@@ -301,7 +274,8 @@ public class JFrameComoJugarGUI extends javax.swing.JFrame {
         newframe.setVisible(true);
         
         // Cierra la ventana actual.
-        this.dispose();        this.dispose();        this.dispose();    }//GEN-LAST:event_jButtonVolverMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jButtonVolverMouseClicked
     
     //Define el método que maneja el evento de clic del ratón en la etiqueta jLabelInfoAtras.
     private void jLabelInfoAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInfoAtrasMouseClicked
