@@ -1,5 +1,5 @@
 package Controlador;
 
-public class ControladorJuego {
+public class ControladorJuego{
 
 }

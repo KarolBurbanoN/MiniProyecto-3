@@ -21,8 +21,8 @@ public class App {
         Juego modelo = new Juego();
         VistaJuegoTerminal vista = new Vista.VistaJuegoTerminal();
         // VistaJuegoGUI vista = new Vista.VistaJuegoGUI();
-        ControladorJuego controlador = new ControladorJuego();
-        //controlador.mostrarInterfaz();
+        ControladorJuego controlador = new ControladorJuego(modelo, vista);
+        controlador.mostrarInterfaz();
     }
 }
 
