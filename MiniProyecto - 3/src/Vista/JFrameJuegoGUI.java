@@ -289,6 +289,7 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
                 break;
         }
         
+
         // Actualiza el resultado de la ronda y la interfaz
         updateRoundResult(result);
     }//GEN-LAST:event_jButtonPiedraActionPerformed
@@ -331,13 +332,12 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPapelActionPerformed
     
     //Define el método que maneja el evento de clic del botón de Tijeras.
-    private void jButtonTijerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTijerasActionPerformed
-    
+    private void jButtonTijerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTijerasActionPerformed<<<<<<< SebastianCastroR-
     }//GEN-LAST:event_jButtonTijerasActionPerformed
     
     //Define el método maneja el evento de clic del botón de Volver, lo que hace que se abra la pantalla inicial del juego y se cierre la ventana actual.
     private void jButtonVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonVolverMouseClicked
-     
+
     }//GEN-LAST:event_jButtonVolverMouseClicked
 
     /**
