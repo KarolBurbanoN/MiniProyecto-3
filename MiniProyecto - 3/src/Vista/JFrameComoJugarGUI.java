@@ -27,6 +27,48 @@ public class JFrameComoJugarGUI extends javax.swing.JFrame {
         initComponents();
 
     }
+    //Las siguientes funciones muestran la informacion de cada elemnto del juego.
+    public void infoAtras(){
+        String mensaje = "INFORMACIÓN DEL JUEGO\n\n" +
+                    "El boton de atras sirve para volver al menu principal";
+            JOptionPane.showMessageDialog(null, mensaje, "INFO ATRAS", JOptionPane.INFORMATION_MESSAGE);   
+    }
+    
+    public void infoResultado(){
+        String mensaje = "INFORMACIÓN DEL JUEGO\n\n" +
+                    "Brinda el resultado de la ronda actual realizada";
+            JOptionPane.showMessageDialog(null, mensaje, "INFO RESULTADO ACTUAL", JOptionPane.INFORMATION_MESSAGE);   
+    }
+    
+    public void infoResultadoRondas(){
+        String mensaje = "INFORMACIÓN DEL JUEGO\n\n" +
+                    "Brinda el resultado de las tres rondas y el resultado final";
+            JOptionPane.showMessageDialog(null, mensaje, "INFO RESULTADO FINAL", JOptionPane.INFORMATION_MESSAGE);   
+    }
+    
+    public void infoSeleccion(){
+        String mensaje = "INFORMACIÓN DEL JUEGO\n\n" +
+                    "Estos son los botones principales del juego, se debe seleccionar uno para jugar contra la pc";
+            JOptionPane.showMessageDialog(null, mensaje, "INFO ATRAS", JOptionPane.INFORMATION_MESSAGE);   
+    }
+    
+    public void infoSeleccionResultado(){
+        String mensaje = "INFORMACIÓN DEL JUEGO\n\n" +
+                    "Muestra la seleccion realizada por el jugador";
+            JOptionPane.showMessageDialog(null, mensaje, "INFO ATRAS", JOptionPane.INFORMATION_MESSAGE);   
+    }
+    
+    public void infoSeleccionResultadoPc(){
+        String mensaje = "INFORMACIÓN DEL JUEGO\n\n" +
+                    "Muestra la seleccion realizada por la pc";
+            JOptionPane.showMessageDialog(null, mensaje, "INFO ATRAS", JOptionPane.INFORMATION_MESSAGE);   
+    }
+    
+    public void infoRondas(){
+        String mensaje = "INFORMACIÓN DEL JUEGO\n\n" +
+                    "Muestra una cuenta regresiva de las rondas que quedan";
+            JOptionPane.showMessageDialog(null, mensaje, "INFO ATRAS", JOptionPane.INFORMATION_MESSAGE);   
+    }     
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -259,36 +301,42 @@ public class JFrameComoJugarGUI extends javax.swing.JFrame {
         newframe.setVisible(true);
         
         // Cierra la ventana actual.
-        this.dispose();      
-    }//GEN-LAST:event_jButtonVolverMouseClicked
+        this.dispose();        this.dispose();        this.dispose();    }//GEN-LAST:event_jButtonVolverMouseClicked
     
     //Define el método que maneja el evento de clic del ratón en la etiqueta jLabelInfoAtras.
     private void jLabelInfoAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInfoAtrasMouseClicked
-       
+        //Llama al método infoAtras que maneja la acción de retroceder o volver a una pantalla anterior da la información de este boton.
+        infoAtras();
     }//GEN-LAST:event_jLabelInfoAtrasMouseClicked
     //Define el método que maneja el evento de clic del ratón en la etiqueta jLabelInfoResultado.
     private void jLabelInfoResultadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInfoResultadoMouseClicked
-        
+        //Llama al método infoResultado que muestra el mensaje sobre la información del elemento del juego.
+        infoResultado();
     }//GEN-LAST:event_jLabelInfoResultadoMouseClicked
     //Define el método que maneja el evento de clic del ratón en la etiqueta jLabelInfoSeleccionH.
     private void jLabelInfoSeleccionHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInfoSeleccionHMouseClicked
-       
+        //Llama al método infoSeleccionResultado que muestra la información sobre el elemento del juego
+        infoSeleccionResultado();
     }//GEN-LAST:event_jLabelInfoSeleccionHMouseClicked
     //Define el método que maneja el evento de clic del ratón en la etiqueta jLabelInfoSeleccion.
     private void jLabelInfoSeleccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInfoSeleccionMouseClicked
-        
+        //Llama al método infoSeleccionResultadoPc que muestra el mensaje sobre la información del elemento del juego.
+        infoSeleccionResultadoPc();
     }//GEN-LAST:event_jLabelInfoSeleccionMouseClicked
     //Define el método que maneja el evento de clic del ratón en la etiqueta 
     private void jLabelInfoResultadoRondaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInfoResultadoRondaMouseClicked
-      
+        //Llama al método infoResultadoRondas que  muestra el mensaje sobre la información del elemento del juego.
+        infoResultadoRondas();
     }//GEN-LAST:event_jLabelInfoResultadoRondaMouseClicked
     //Define el método que maneja el evento de clic del ratón en la etiqueta 
     private void jLabelInfoOpcionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInfoOpcionesMouseClicked
-        
+        //Llama al método infoSeleccion que  muestra el mensaje sobre la información del elemento del juego.
+        infoSeleccion();
     }//GEN-LAST:event_jLabelInfoOpcionesMouseClicked
     //Define el método que maneja el evento de clic del ratón en la etiqueta 
     private void jLabelInfoRondasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInfoRondasMouseClicked
-       
+        //Llama al método infoRondas que  muestra el mensaje sobre la información del elemento del juego.
+        infoRondas();
     }//GEN-LAST:event_jLabelInfoRondasMouseClicked
 
     /**
