@@ -2,6 +2,8 @@ package Controlador;
 
 import Modelo.Juego;
 import Vista.VistaJuego;
+
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,11 +21,11 @@ public class ControladorJuego{
 
 
     public void mostrarInterfaz() {
-        byte opcion;
+        byte opcion = -1;
 
         do {
             vista.mostrarMenuPrincipal(this);
-            opcion = scanner.nextByte();
+            opcion = leerOpcion(3);  // leerOpcion para menú principal
             switch (opcion) {
                 case 1:
                     jugar();
@@ -47,13 +49,12 @@ public class ControladorJuego{
 
         while (modelo.getVictoriasJugador() < 2 && modelo.getVictoriasComputadora() < 2) {
             vista.mostrarMenuJuego();
-            byte opcion = scanner.nextByte();
+            byte opcion = leerOpcion(4);  // leerOpcion para menú de juego
 
             if (opcion == 4) {
                 System.out.println("\nSaliendo...");
                 break;
             }
-            
 
             int resultado = jugarRonda(opcion);
 
@@ -106,4 +107,23 @@ public class ControladorJuego{
         }
     }
 
+    private byte leerOpcion(int maxOpciones) {
+        byte opcion = -1;
+        boolean opcionValida = false;
+
+        while (!opcionValida) {
+            try {
+                opcion = scanner.nextByte();
+                if (opcion >= 1 && opcion <= maxOpciones) {
+                    opcionValida = true;
+                } else {
+                    System.out.print("Opción fuera de rango. Intente nuevamente: ");
+                }
+            } catch (InputMismatchException e) {
+                System.out.print("Entrada inválida. Por favor, ingrese un número: ");
+                scanner.next(); // Consumir entrada inválida
+            }
+        }
+        return opcion;
+    }
 }
