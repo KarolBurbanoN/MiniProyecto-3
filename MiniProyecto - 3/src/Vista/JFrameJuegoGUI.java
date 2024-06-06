@@ -261,13 +261,14 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
         
         // Actualiza la imagen del jugador a Piedra.
         jLabelPiedraH.setIcon(new ImageIcon(getClass().getResource("/imagenes/piedra.png")));
-        
+
+      
         // Asegura que la imagen del jugador esté visible.
         jLabelPiedraH.setVisible(true);
         
         // Llama al método para que la computadora elija una opción.
         pcSetOption();
-        
+
         // Declara una variable para almacenar el resultado de la ronda.
         String result = "";
         
@@ -289,6 +290,7 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
                 break;
         }
         
+
         // Actualiza el resultado de la ronda y la interfaz
         updateRoundResult(result);
     }//GEN-LAST:event_jButtonPiedraActionPerformed
@@ -331,6 +333,7 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPapelActionPerformed
     
     //Define el método que maneja el evento de clic del botón de Tijeras.
+
     private void jButtonTijerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTijerasActionPerformed
         
         // Actualiza la imagen del jugador a Tijeras.
@@ -365,10 +368,12 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
         
         // Actualiza el resultado de la ronda y la interfaz.
         updateRoundResult(result);
-    }//GEN-LAST:event_jButtonTijerasActionPerformed
+
+
     
     //Define el método maneja el evento de clic del botón de Volver, lo que hace que se abra la pantalla inicial del juego y se cierre la ventana actual.
     private void jButtonVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonVolverMouseClicked
+
         
         // Crea una nueva instancia de la pantalla inicial del juego.
         VistaJuegoGUI newframe = new VistaJuegoGUI();
@@ -378,6 +383,7 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
         
         // Cierra la ventana actual.
         this.dispose();
+
     }//GEN-LAST:event_jButtonVolverMouseClicked
 
     /**
