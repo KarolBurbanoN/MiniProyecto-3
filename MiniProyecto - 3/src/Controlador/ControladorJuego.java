@@ -31,7 +31,7 @@ public class ControladorJuego{
                     jugar();
                     break;
                 case 2:
-                    vista.mostrarInstrucciones();
+                    vista.mostrarInstrucciones(this);
                     scanner.nextLine(); // Para esperar la selección de salir
                     break;
                 case 3:
@@ -48,7 +48,7 @@ public class ControladorJuego{
         modelo.reiniciarVictorias();
 
         while (modelo.getVictoriasJugador() < 2 && modelo.getVictoriasComputadora() < 2) {
-            vista.mostrarMenuJuego();
+            vista.mostrarMenuJuego(this);
             byte opcion = leerOpcion(4);  // leerOpcion para menú de juego
 
             if (opcion == 4) {
@@ -127,3 +127,5 @@ public class ControladorJuego{
         return opcion;
     }
 }
+
+

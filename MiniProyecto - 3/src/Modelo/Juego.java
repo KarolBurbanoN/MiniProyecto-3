@@ -30,4 +30,3 @@ public class Juego {
         this.victoriasComputadora = 0;
     }
 }
-

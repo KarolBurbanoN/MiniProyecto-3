@@ -1,29 +1,27 @@
-/**
- * @file JframeJuegoGUI.java
- * @brief 
- * @author
- *         - Sebastian Castro - 2359435
- *         - Karol Burbano - 2359305
- *         -Veronica Mujica - 2359406
- *         -Jeidy Murillo - 2359310 
- */
-
-
 import Controlador.ControladorJuego;
 import Modelo.Juego;
 import Vista.VistaJuegoTerminal;
 import Vista.VistaJuego;
 import Vista.VistaJuegoGUI;
 
-public class App {
+import javax.swing.JOptionPane;
 
-    public static void main(String[] args) throws Exception {
+public class App {
+    public static void main(String[] args) {
         Juego modelo = new Juego();
-        VistaJuegoTerminal vista = new Vista.VistaJuegoTerminal();
-        // VistaJuegoGUI vista = new Vista.VistaJuegoGUI();
+        String[] options = {"Terminal", "Interfaz Gráfica"};
+        int choice = JOptionPane.showOptionDialog(null, "Seleccione el modo de juego", "Modo de juego",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        
+        VistaJuego vista;
+        if (choice == 1) {
+            vista = new VistaJuegoGUI();
+        } else {
+            vista = new VistaJuegoTerminal();
+        }
+        
         ControladorJuego controlador = new ControladorJuego(modelo, vista);
         controlador.mostrarInterfaz();
     }
 }
-
 

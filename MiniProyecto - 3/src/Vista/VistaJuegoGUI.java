@@ -4,8 +4,12 @@
  */
 package Vista;
 
+import javax.swing.JOptionPane;
+
+import Controlador.ControladorJuego;
+
 /**
- * @file JframeInicioGUI.java
+ * @file VistaJuegoGUI.java
  * @brief 
  * @author
  *         - Sebastian Castro - 2359435
@@ -13,10 +17,12 @@ package Vista;
  *         -Veronica Mujica - 2359406
  *         -Jeidy Murillo - 2359310 
  */
-public class VistaJuegoGUI extends javax.swing.JFrame {
+public class VistaJuegoGUI extends javax.swing.JFrame implements VistaJuego{
+
+    private ControladorJuego controlador;
 
     /**
-     * Creates new form JFrameInicioGUI
+     * Creates new form VistaJuegoGUI
      */
     public VistaJuegoGUI() {
         initComponents();
@@ -48,7 +54,7 @@ public class VistaJuegoGUI extends javax.swing.JFrame {
         jButtonJugar.setContentAreaFilled(false);
         jButtonJugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonJugarActionPerformed(evt);
+                mostrarMenuJuego(controlador);
             }
         });
         getContentPane().add(jButtonJugar);
@@ -58,7 +64,7 @@ public class VistaJuegoGUI extends javax.swing.JFrame {
         jButtonComo.setContentAreaFilled(false);
         jButtonComo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonComoActionPerformed(evt);
+                mostrarInstrucciones(controlador);
             }
         });
         getContentPane().add(jButtonComo);
@@ -67,9 +73,9 @@ public class VistaJuegoGUI extends javax.swing.JFrame {
         jLabelTitulo.setBackground(new java.awt.Color(255, 255, 255));
         jLabelTitulo.setFont(new java.awt.Font("{¡Estoy Bueno!}", 1, 24)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTitulo.setText("BIENVENIDOS AL JUEGO ");
+        jLabelTitulo.setText("BIENVENIDOS AL JUEGO");
         getContentPane().add(jLabelTitulo);
-        jLabelTitulo.setBounds(420, 50, 280, 40);
+        jLabelTitulo.setBounds(420, 50, 300, 40);
 
         jLabelSub.setBackground(new java.awt.Color(255, 255, 255));
         jLabelSub.setFont(new java.awt.Font("{¡Estoy Bueno!}", 1, 18)); // NOI18N
@@ -89,31 +95,16 @@ public class VistaJuegoGUI extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1118, 665));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    //Define el método maneja el evento de clic del botón de como jugar, lo que hace que se abra la pantalla de como jugar del juego y se cierre la ventana actual.
-    private void jButtonComoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComoActionPerformed
-        // Crea una nueva instancia de la pantalla de como jugar del juego.
-        JFrameComoJugarGUI newframe = new JFrameComoJugarGUI();
-        // Hace visible la nueva pantalla.
-        newframe.setVisible(true);
-        
-        this.dispose();
-    }//GEN-LAST:event_jButtonComoActionPerformed
+
     
     //Define el método maneja el evento de clic del botón de jugar, lo que hace que se abra la pantalla del juego y se cierre la ventana actual.
-    private void jButtonJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJugarActionPerformed
-        // Crea una nueva instancia de la pantalla del juego.
-        JFrameJuegoGUI newframe = new JFrameJuegoGUI();
-        // Hace visible la nueva pantalla.
-        newframe.setVisible(true);
-        // Cierra la ventana actual.
-        this.dispose();
-    }//GEN-LAST:event_jButtonJugarActionPerformed
-
+    
+        
     /**
      * @param args the command line arguments
      */
     //El método main configura el look and feel de Nimbus para la aplicación y lanza la interfaz gráfica de usuario principal del juego.
-    public static void main(String args[]) {
+    public void mostrarInterfaz(ControladorJuego controlador) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -144,6 +135,38 @@ public class VistaJuegoGUI extends javax.swing.JFrame {
             }
         });
     }
+
+    @Override
+    public void mostrarMenuPrincipal(ControladorJuego juego) {
+        setVisible(true); // Muestra la ventana principal del juego
+    }
+
+    @Override
+    public void mostrarMenuJuego(ControladorJuego juego) {
+        // Crea una nueva instancia de la pantalla del juego.
+        JFrameJuegoGUI newframe = new JFrameJuegoGUI();
+        // Hace visible la nueva pantalla.
+        newframe.setVisible(true);
+        // Cierra la ventana actual.
+        this.dispose();
+    }//GEN-LAST:event_jButtonJugarActionPerformed
+
+
+    @Override
+    public void mostrarResultado(int victoriasJugador, int victoriasComputadora) {
+        JOptionPane.showMessageDialog(this, "Jugador: " + victoriasJugador + " - Computadora: " + victoriasComputadora);
+    }
+
+    @Override
+    public void mostrarInstrucciones(ControladorJuego juego) {
+        // Crea una nueva instancia de la pantalla de como jugar del juego.
+        JFrameComoJugarGUI newframe = new JFrameComoJugarGUI();
+        // Hace visible la nueva pantalla.
+        newframe.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_jButtonComoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonComo;

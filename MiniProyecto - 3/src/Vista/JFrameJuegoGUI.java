@@ -18,21 +18,110 @@ import javax.swing.ImageIcon;
 import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import Modelo.Juego;
 
 
 public class JFrameJuegoGUI extends javax.swing.JFrame {
 
-   
+
+    private Juego modelo;
+    //Declaracion de variables
+    int opcionPc = 0; //Almacena la opcion elegida por la computadora
+    int rounds = 0;//Almacena el número de rondas jugadas
+    int conteo = 3;//Almacena el número de rondas restantes
+    
+    //Crea un objeto Random para generar elecciones aleatorias.
+    Random random = new Random();
+    
+    //Crea un modelo de lista para almacenar y mostrar los resultados de las rondas.
+    DefaultListModel<String> listModel = new DefaultListModel<>();     
+    
     /**
      * Creates new form JFrameJuegoGUI
      */
     //Define el constructor
     public JFrameJuegoGUI() {
         initComponents();
-       
+        jListInfo.setModel(listModel);
+        actualizarConteo();
+        modelo = new Juego();
     }
 
-   
+    //Funcion donde la pc elige de forma aleatoria una opcion estos son: Piedra = 0, Papel = 1 y Tijera = 2 
+    public void pcSetOption() {
+        
+        //Genera un número aleatorio entre 0 y 2.
+        opcionPc = random.nextInt(3);
+        
+        //Declara una variable para almacenar la ruta de la imagen
+        String imagePath = "";
+        
+        //Asigna la ruta de la imagen correspondiente según la opción elegida.
+        switch (opcionPc) {
+            case 0:
+                imagePath = "/imagenes/piedraPc.png";
+                break;
+            case 1:
+                imagePath = "/imagenes/papelPc.png";
+                break;
+            case 2:
+                imagePath = "/imagenes/tijerasPc.png";
+                break;
+        }
+
+        //System.out.println("Cargando imagen desde: " + getClass().getResource(imagePath));
+        //Actualiza la imagen en jLabelPiedraP si la ruta es válida o muestra un mensaje de error en caso contrario.
+        if (getClass().getResource(imagePath) != null) {
+            jLabelPiedraP.setIcon(new ImageIcon(getClass().getResource(imagePath)));
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: No se pudo cargar la imagen desde " + imagePath);
+        }
+    }
+    
+    // Define el método para actualizar el resultado de la ronda.
+    private void updateRoundResult(String result) {
+        rounds++; //Incrementa el número de rondas jugadas.
+        conteo--; //Decrementa el número de rondas restantes.
+        
+        //Añade el resultado de la ronda a la lista.
+        listModel.addElement("Ronda " + (rounds) + ": " + result);
+        
+        //Actualiza el conteo de rondas restantes.
+        actualizarConteo();
+        
+        //Si se han jugado tres rondas, determina el ganador final y reinicia el juego.
+        if (rounds == 3) {
+            String winner;
+            if (modelo.getVictoriasJugador() > modelo.getVictoriasComputadora()) {
+                winner = "Resultado final: ¡Ganaste el juego!";
+            } else if (modelo.getVictoriasJugador() < modelo.getVictoriasComputadora()) {
+                winner = "Resultado final: ¡La computadora ganó el juego!";
+            } else {
+                winner = "Resultado final: ¡Es un empate!";
+            }
+            listModel.addElement(winner);
+            listModel.addElement("----------------------------------------------");
+            resetGame();
+        }
+    } 
+    
+    //Define el método para actualizar el conteo de rondas restantes.
+    private void actualizarConteo() {
+        
+        // Actualiza el texto de la etiqueta jLabelConteo.
+        jLabelConteo.setText(String.valueOf(conteo));
+        
+        //Redibuja la etiqueta para reflejar los cambios.
+        jLabelConteo.repaint();
+    }
+    
+    //Define el método para reiniciar el juego.
+    private void resetGame() {
+        rounds = 0;
+        modelo.reiniciarVictorias();
+        conteo = 3;
+        actualizarConteo();
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -142,14 +231,14 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
         jLabelTitulo1.setFont(new java.awt.Font("Meanwhile por Camelot", 3, 18)); // NOI18N
         jLabelTitulo1.setForeground(new java.awt.Color(153, 0, 153));
         jLabelTitulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTitulo1.setText("RESULTAdo");
+        jLabelTitulo1.setText("RESULTADO");
         getContentPane().add(jLabelTitulo1);
         jLabelTitulo1.setBounds(260, 170, 170, 40);
 
         jLabelTitulo2.setFont(new java.awt.Font("Meanwhile por Camelot", 3, 18)); // NOI18N
         jLabelTitulo2.setForeground(new java.awt.Color(153, 0, 153));
         jLabelTitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelTitulo2.setText("RESULTAdo de las tres rondas");
+        jLabelTitulo2.setText("Resultado de las tres rondas");
         getContentPane().add(jLabelTitulo2);
         jLabelTitulo2.setBounds(690, 130, 320, 40);
 
@@ -173,14 +262,13 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
         
         // Actualiza la imagen del jugador a Piedra.
         jLabelPiedraH.setIcon(new ImageIcon(getClass().getResource("/imagenes/piedra.png")));
-
-      
+        
         // Asegura que la imagen del jugador esté visible.
         jLabelPiedraH.setVisible(true);
         
         // Llama al método para que la computadora elija una opción.
         pcSetOption();
-
+        
         // Declara una variable para almacenar el resultado de la ronda.
         String result = "";
         
@@ -192,29 +280,58 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
                 break;
             case 1:
                 result = "Computadora gana";
-                scorePc++;
+                modelo.incrementarVictoriasComputadora();
                 jLabelTitulo1.setIcon(new ImageIcon(getClass().getResource("/imagenes/ganaPc.png")));
                 break;
             case 2:
                 result = "Jugador gana";
-                scorePlayer++;
+                modelo.incrementarVictoriasJugador();
                 jLabelTitulo1.setIcon(new ImageIcon(getClass().getResource("/imagenes/ganaHumano.png")));
                 break;
         }
         
-
         // Actualiza el resultado de la ronda y la interfaz
         updateRoundResult(result);
-
     }//GEN-LAST:event_jButtonPiedraActionPerformed
     
     //Define el método que maneja el evento de clic del botón de Papel.
     private void jButtonPapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPapelActionPerformed
-      
+        
+        //Actualiza la imagen del jugador a Papel.
+        jLabelPiedraH.setIcon(new ImageIcon(getClass().getResource("/imagenes/papel.png")));
+        
+        //Asegura que la imagen del jugador esté visible.
+        jLabelPiedraH.setVisible(true);
+        
+        // Llama al método para que la computadora elija una opción.
+        pcSetOption();
+        
+        //Declara una variable para almacenar el resultado de la ronda.
+        String result = "";
+        
+        //Determina el resultado de la ronda según la elección de la computadora y actualiza la puntuación.
+        switch(opcionPc){
+            case 0:
+                result = "Jugador gana";
+                modelo.incrementarVictoriasJugador();
+                jLabelTitulo1.setIcon(new ImageIcon(getClass().getResource("/imagenes/ganaHumano.png")));
+                break;
+            case 1:
+                result = "Empate";
+                jLabelTitulo1.setIcon(new ImageIcon(getClass().getResource("/imagenes/empate.png")));
+                break;
+            case 2:
+                result = "Computadora gana";
+                modelo.incrementarVictoriasComputadora();
+                jLabelTitulo1.setIcon(new ImageIcon(getClass().getResource("/imagenes/ganaPc.png")));
+                break;
+        }
+        
+        //Actualiza el resultado de la ronda y la interfaz.
+        updateRoundResult(result);
     }//GEN-LAST:event_jButtonPapelActionPerformed
     
     //Define el método que maneja el evento de clic del botón de Tijeras.
-
     private void jButtonTijerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTijerasActionPerformed
         
         // Actualiza la imagen del jugador a Tijeras.
@@ -233,12 +350,12 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
         switch(opcionPc){
             case 0:
                 result = "Computadora gana";
-                scorePc++;
+                modelo.incrementarVictoriasComputadora();
                 jLabelTitulo1.setIcon(new ImageIcon(getClass().getResource("/imagenes/ganaPc.png")));
                 break;
             case 1:
                 result = "Jugador gana";
-                scorePlayer++;
+                modelo.incrementarVictoriasJugador();
                 jLabelTitulo1.setIcon(new ImageIcon(getClass().getResource("/imagenes/ganaHumano.png")));
                 break;
             case 2:
@@ -249,12 +366,10 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
         
         // Actualiza el resultado de la ronda y la interfaz.
         updateRoundResult(result);
-
-
+    }//GEN-LAST:event_jButtonTijerasActionPerformed
     
     //Define el método maneja el evento de clic del botón de Volver, lo que hace que se abra la pantalla inicial del juego y se cierre la ventana actual.
     private void jButtonVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonVolverMouseClicked
-
         
         // Crea una nueva instancia de la pantalla inicial del juego.
         VistaJuegoGUI newframe = new VistaJuegoGUI();
@@ -263,9 +378,7 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
         newframe.setVisible(true);
         
         // Cierra la ventana actual.
-        this.dispose();
-
-    }//GEN-LAST:event_jButtonVolverMouseClicked
+        this.dispose();        this.dispose();        this.dispose();    }//GEN-LAST:event_jButtonVolverMouseClicked
 
     /**
      * @param args the command line arguments
