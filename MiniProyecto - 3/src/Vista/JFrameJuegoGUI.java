@@ -171,41 +171,7 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
     //Define el método que maneja el evento de clic del botón de Piedra.
     private void jButtonPiedraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPiedraActionPerformed
         
-        // Actualiza la imagen del jugador a Piedra.
-        jLabelPiedraH.setIcon(new ImageIcon(getClass().getResource("/imagenes/piedra.png")));
-
-      
-        // Asegura que la imagen del jugador esté visible.
-        jLabelPiedraH.setVisible(true);
         
-        // Llama al método para que la computadora elija una opción.
-        pcSetOption();
-
-        // Declara una variable para almacenar el resultado de la ronda.
-        String result = "";
-        
-        // Determina el resultado de la ronda según la elección de la computadora y actualiza la puntuación.
-        switch(opcionPc){
-            case 0:
-                result = "Empate";
-                jLabelTitulo1.setIcon(new ImageIcon(getClass().getResource("/imagenes/empate.png")));
-                break;
-            case 1:
-                result = "Computadora gana";
-                scorePc++;
-                jLabelTitulo1.setIcon(new ImageIcon(getClass().getResource("/imagenes/ganaPc.png")));
-                break;
-            case 2:
-                result = "Jugador gana";
-                scorePlayer++;
-                jLabelTitulo1.setIcon(new ImageIcon(getClass().getResource("/imagenes/ganaHumano.png")));
-                break;
-        }
-        
-
-        // Actualiza el resultado de la ronda y la interfaz
-        updateRoundResult(result);
-
     }//GEN-LAST:event_jButtonPiedraActionPerformed
     
     //Define el método que maneja el evento de clic del botón de Papel.
@@ -214,57 +180,13 @@ public class JFrameJuegoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPapelActionPerformed
     
     //Define el método que maneja el evento de clic del botón de Tijeras.
-
     private void jButtonTijerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTijerasActionPerformed
-        
-        // Actualiza la imagen del jugador a Tijeras.
-        jLabelPiedraH.setIcon(new ImageIcon(getClass().getResource("/imagenes/tijeras.png")));
-        
-        // Asegura que la imagen del jugador esté visible.
-        jLabelPiedraH.setVisible(true);
-        
-        // Llama al método para que la computadora elija una opción.
-        pcSetOption();
-        
-        // Declara una variable para almacenar el resultado de la ronda.
-        String result = "";
-        
-        // Determina el resultado de la ronda según la elección de la computadora y actualiza la puntuación.
-        switch(opcionPc){
-            case 0:
-                result = "Computadora gana";
-                scorePc++;
-                jLabelTitulo1.setIcon(new ImageIcon(getClass().getResource("/imagenes/ganaPc.png")));
-                break;
-            case 1:
-                result = "Jugador gana";
-                scorePlayer++;
-                jLabelTitulo1.setIcon(new ImageIcon(getClass().getResource("/imagenes/ganaHumano.png")));
-                break;
-            case 2:
-                result = "Empate";
-                jLabelTitulo1.setIcon(new ImageIcon(getClass().getResource("/imagenes/empate.png")));
-                break;
-        }
-        
-        // Actualiza el resultado de la ronda y la interfaz.
-        updateRoundResult(result);
-
-
+      
+    }//GEN-LAST:event_jButtonTijerasActionPerformed
     
     //Define el método maneja el evento de clic del botón de Volver, lo que hace que se abra la pantalla inicial del juego y se cierre la ventana actual.
     private void jButtonVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonVolverMouseClicked
-
         
-        // Crea una nueva instancia de la pantalla inicial del juego.
-        VistaJuegoGUI newframe = new VistaJuegoGUI();
-        
-        // Hace visible la nueva pantalla.
-        newframe.setVisible(true);
-        
-        // Cierra la ventana actual.
-        this.dispose();
-
     }//GEN-LAST:event_jButtonVolverMouseClicked
 
     /**
