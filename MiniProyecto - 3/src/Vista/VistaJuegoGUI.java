@@ -91,12 +91,22 @@ public class VistaJuegoGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     //Define el método maneja el evento de clic del botón de como jugar, lo que hace que se abra la pantalla de como jugar del juego y se cierre la ventana actual.
     private void jButtonComoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComoActionPerformed
-
+        // Crea una nueva instancia de la pantalla de como jugar del juego.
+        JFrameComoJugarGUI newframe = new JFrameComoJugarGUI();
+        // Hace visible la nueva pantalla.
+        newframe.setVisible(true);
+        
+        this.dispose();
     }//GEN-LAST:event_jButtonComoActionPerformed
     
     //Define el método maneja el evento de clic del botón de jugar, lo que hace que se abra la pantalla del juego y se cierre la ventana actual.
     private void jButtonJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJugarActionPerformed
-
+        // Crea una nueva instancia de la pantalla del juego.
+        JFrameJuegoGUI newframe = new JFrameJuegoGUI();
+        // Hace visible la nueva pantalla.
+        newframe.setVisible(true);
+        // Cierra la ventana actual.
+        this.dispose();
     }//GEN-LAST:event_jButtonJugarActionPerformed
 
     /**
